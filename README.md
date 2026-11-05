@@ -1,4 +1,4 @@
-# Nero Security Blog
+# Roné Security Blog
 
 Jekyll 기반 보안·개발 블로그입니다.
 

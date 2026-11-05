@@ -3,9 +3,9 @@
 
 <h1 class="category-header">
     {% if page_level == 1 %}
-        All Posts
+        전체 글
     {% else %}
-        {{ category_title }}
+        {{ page.title | default: category_title }}
     {% endif %}
 </h1>
 <div id="category-list">
@@ -16,28 +16,26 @@
         {% unless sub_page.url contains "index.html" or sub_page.page_type == "page" %}
             {%- assign post_counts = post_counts | plus:1 -%}
             <li class="paginated-item">
-                <div id="article_content">
+                <article class="post-list-row">
                     <div class="thumbnail_zone">
-                        {% if sub_page.thumbnail != nil %}
-                            {%- assign thumbnail_url = sub_page.thumbnail -%}
-                            {%- assign check_localasset = thumbnail_url | split:'/' -%}
-                            {% if check_localasset[0] == '' %}
-                                {%- assign thumbnail_url = thumbnail_url | prepend: site.baseurl -%}
-                            {% endif %}
-                            <a href="{{ sub_page.url | prepend: site.baseurl }}" class="thumbnail_post" loading="lazy" aria-label="thumbnail_post" style="background-image:url('{{ thumbnail_url }}') !important"></a>
-                        {% else %}
-                            <a href="{{ sub_page.url | prepend: site.baseurl }}" class="thumbnail_post empty" loading="lazy" aria-label="thumbnail_post" style="background-image:url('{{ '/assets/img/thumbnail/empty.jpg' | prepend: site.baseurl }}') !important"></a>
-                        {% endif %}
+                        {% assign thumbnail_url = sub_page.thumbnail | default: '/assets/img/thumbnail/empty.jpg' %}
+                        {% assign thumbnail_prefix = thumbnail_url | slice: 0, 1 %}
+                        {% if thumbnail_prefix == '/' %}{% assign thumbnail_url = thumbnail_url | prepend: site.baseurl %}{% endif %}
+                        <a href="{{ sub_page.url | prepend: site.baseurl }}" class="thumbnail_post" aria-label="{{ sub_page.title | escape }}">
+                            <img src="{{ thumbnail_url | escape }}" alt="" loading="lazy" width="160" height="160">
+                        </a>
                     </div>
                     <div class="box_contents">
-                        <a href="{{ sub_page.url | prepend: site.baseurl }}"><h1 class="title_post">{{ sub_page.title }}</h1></a>
+                        <a href="{{ sub_page.url | prepend: site.baseurl }}"><h2 class="title_post">{{ sub_page.title }}</h2></a>
                         <a href="{{ sub_page.url | prepend: site.baseurl }}" class="txt_post">
-                            {{ sub_page.content | markdownify | strip_html }}
+                            {{ sub_page.description | default: sub_page.content | markdownify | strip_html | truncate: 180 }}
                         </a>
                         <div class="info-post">
                             {%- assign sub_page_tree = sub_page.path | split: "/" -%}
                             {% if sub_page_tree.size > 2 %}
-                                <a href="{{ '/' | append: sub_page_tree[1] | prepend: site.baseurl }}" class="category">{{ sub_page_tree[1] }}</a>
+                                {% assign category_path = sub_page.path | split: '/' | pop | join: '/' | append: '/index.md' %}
+                                {% assign category_page = site.pages | where: 'path', category_path | first %}
+                                <a href="{{ category_page.url | remove: 'index.html' | prepend: site.baseurl }}" class="category">{{ category_page.bookmark | default: sub_page_tree[2] }}</a>
                             {% else %}
                                 <span class="category">None</span>
                             {% endif %}
@@ -47,20 +45,26 @@
                             {% endif %}
                         </div>
                     </div>
-                </div>
+                </article>
             </li>
         {% endunless %}
         {% endif %}
     {%- endfor -%}
     </ul>
     {% if post_counts == 0 %}
-        <div class="no-posts">
-            <img src="{{ '/assets/img/sorry.png' | prepend: site.baseurl }}"></img>
-            <h1>아직 작성된 글이 없습니다</h1>
+        <div class="no-posts" role="status">
+            <div class="no-posts-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 3.5h7l4 4V19a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 5 19V5A1.5 1.5 0 0 1 6.5 3.5H7Z"/>
+                    <path d="M14 3.5V8h4M9 12h6M9 16h4"/>
+                </svg>
+            </div>
+            <h2>아직 작성된 글이 없어요</h2>
+            <p>새로운 이야기를 준비하고 있어요.</p>
         </div>
     {% endif %}
 </div>
-<div class="pagination">
+<div class="pagination"{% if post_counts == 0 %} hidden{% endif %}>
     <nav class="pagination-container">
         <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
             &lt;

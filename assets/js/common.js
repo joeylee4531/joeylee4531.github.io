@@ -3,7 +3,7 @@ var baseurl = document.querySelector('meta[name="baseurl"]').content;
 
 document.addEventListener('DOMContentLoaded', function(){
     // Init theme
-    let currentTheme = localStorage.getItem('theme');
+    let currentTheme = localStorage.getItem('theme') || 'dark';
     let isDarkMode = false;
 
     if (currentTheme === 'dark'){
@@ -134,6 +134,24 @@ document.addEventListener('DOMContentLoaded', function(){
 
         iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
     }
+
+    // Expandable toolbar search uses the existing results interface.
+    document.querySelectorAll('.toolbar-search').forEach(form => {
+        const input = form.querySelector('input');
+        form.addEventListener('submit', event => {
+            event.preventDefault();
+            if (!input.value.trim()) { input.focus(); return; }
+            const search = document.getElementById('search');
+            const target = document.getElementById('search-input');
+            search.classList.add('active');
+            target.value = input.value.trim();
+            target.dispatchEvent(new KeyboardEvent('keyup', { bubbles:true }));
+            target.focus();
+        });
+        input.addEventListener('keydown', event => {
+            if (event.key === 'Escape') { input.value = ''; input.blur(); }
+        });
+    });
 
     // search box
     const searchButton = document.querySelectorAll(".btn-search");
@@ -268,83 +286,5 @@ function searchPost(pages){
         }
     
         return txt;
-    }
-}
-
-function searchRelated(pages){
-    const refBox = document.getElementById('related-box');
-    const refResults = document.getElementById('related-posts');
-
-    if (!refBox) return;
-
-    var relatedPosts = [];
-    var currPost = pages.find(obj => {return normalizePath(obj.url) === normalizePath(location.pathname)});
-
-    if (!currPost) { refBox.hidden = true; return; }
-    let currTags = currPost.tags.split(', ').filter(Boolean);
-    let currCategory = currPost.path.split(' > ').pop();
-
-    for (var i = 0; i < pages.length; i++) {
-        let page = pages[i];
-
-        if (page.type !== 'post') continue;
-
-        if (page.title === currPost.title) continue;
-
-        let tags = page.tags.split(', ');
-        let category = page.path.split(' > ').pop();
-        let correlationScore = 0;
-
-        for (var j = 0; j < currTags.length; j++){
-            if (tags.indexOf(currTags[j]) != -1) correlationScore += 1;
-        }
-
-        if (category === currCategory) correlationScore += 1;
-
-        if (correlationScore == 0) continue;
-
-        relatedPosts.push({
-            'title': page.title,
-            'date': page.date,
-            'category': category,
-            'url': page.url,
-            'thumbnail': page.image,
-            'score': correlationScore
-        });
-    }
-
-    relatedPosts.sort(function (a, b) {
-        if(a.hasOwnProperty('score')){
-            return b.score - a.score;
-        }
-    });
-
-    if (relatedPosts.length == 0){
-        refBox.style.display = 'none';
-        return;
-    }
-
-    for (var i = 0; i < Math.min(relatedPosts.length, 6); i++){
-        let post = relatedPosts[i];
-        let date = '-';
-        let category = 'No category';
-
-        if (post.date !== '1900-01-01'){
-            date = new Date(post.date);
-            date = date.toLocaleString('en-US', {day: 'numeric', month:'long', year:'numeric'});
-        }
-
-        if (post.category !== '') category = post.category;
-
-        let contents = document.createElement("li");
-        contents.classList.add("related-item");
-        contents.innerHTML = '<a href="' + post.url +
-            '"><img src="' + post.thumbnail + 
-            '"/><p class="category">' + category +  
-            '</p><p class="title">' + post.title + 
-            '</p><p class="date">' + date +
-            '</p></a>';
-
-        refResults.append(contents);
     }
 }

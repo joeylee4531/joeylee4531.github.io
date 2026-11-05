@@ -1,3 +1,4 @@
 ---
-nav_hidden: true
+bookmark: HOME
+nav_order: 1
 ---

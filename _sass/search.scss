@@ -28,11 +28,7 @@
       color:#666;
     }
 
-    &::-webkit-scrollbar {
-      width:8px;
-      background-color:#ddd;
-    }
-    &::-webkit-scrollbar-thumb { background-color:rosybrown; }
+
   }
 
   &.active{ display:flex; }

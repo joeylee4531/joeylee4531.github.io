@@ -11,7 +11,7 @@
     {% if page.page_type %}{% assign page_type = page.page_type %}{% endif %}
     <head>
         {% include head.html %}
-        <link rel="preload" href="{{ site.profile_img | prepend: site.baseurl }}" as="image">
+        <link rel="preload" href="{{ '/assets/img/profile-gudetama.png' | relative_url }}" as="image">
         <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
         {% if page_type == "post" %}
 
@@ -46,7 +46,7 @@
     </head>
     <body>
         <script type="text/javascript">
-            let currentTheme = localStorage.getItem('theme');
+            let currentTheme = localStorage.getItem('theme') || 'dark';
         
             document.body.classList[currentTheme === 'dark' ? 'add' : 'remove']('dark-theme');
         </script>
@@ -61,7 +61,6 @@
             <div class="inner-content">
                 {% include category.html %}
                 {% if page_type == "category" %}
-                    {% include loading.html %}
                     {% include pagination.html %}
                 {% else %}
                     {% include post.html %}

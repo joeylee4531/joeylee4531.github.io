@@ -7,18 +7,14 @@ html, body {
   padding:0;
 }
 
-.fonts-loaded {
-  a, span, p { font-family:"Nunito Sans", 'Lucida Sans', sans-serif; }
-  h1, h2, h3 { font-family:"Lato", Helvetica, sans-serif; }
-  mark { font-family:'Righteous', sans-serif; }
-}
+
 
 a { text-decoration:none; }
 a, span, p, h1, h2, h3, i { color:#3A241A; }
-a, span, p { font-family:'Lucida Sans', sans-serif; }
+a, span, p { font-family:var(--font-sans); }
 h1, h2, h3, mark {
   margin:0;
-  font-family:Helvetica, sans-serif;
+  font-family:var(--font-sans);
 }
 mark { background-color:transparent; }
 
@@ -64,3 +60,11 @@ input::-webkit-search-results-decoration{
 @import "post";
 @import "search";
 @import "darkmode";
+@import "palette";
+
+@import "archives";
+
+@import "resume";
+
+:root { --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", "Malgun Gothic", sans-serif; }
+html, body, button, input, textarea, select { font-family:var(--font-sans); }

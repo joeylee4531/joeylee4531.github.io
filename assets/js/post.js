@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
     var innerContent = document.querySelector('main');
-    let currentTheme = localStorage.getItem('theme');
+    let currentTheme = localStorage.getItem('theme') || 'dark';
 
     // tocbot
     var headings = innerContent.querySelectorAll('h1, h2');
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     const tocBorad = document.querySelector(".toc-board");
     
+    if (tocBorad) {
     Array.from(headings).forEach(function(heading){
         let tocItem = document.createElement("li");
         tocItem.classList.add("toc-list-item");
@@ -70,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function(){
             tocLink.classList.add('is-active-link');
         }
     }, 200);
+
+    }
 
     // link (for hover effect)
     var links = innerContent.querySelectorAll('a:not(.related-item a)');
