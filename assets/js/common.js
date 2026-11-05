@@ -39,31 +39,21 @@ document.addEventListener('DOMContentLoaded', function(){
         link.setAttribute('aria-expanded', item.classList.contains('active'));
         link.addEventListener('click', event => { event.preventDefault(); const open = item.classList.toggle('active'); link.setAttribute('aria-expanded', open); const button = item.querySelector('.nav-list-expander'); if (button) button.setAttribute('aria-pressed', open); });
     });
-    // kept nav opened
-    var firstNavs = document.querySelectorAll('.nav-first');
-    var page_path = normalizePath(window.location.pathname);
-    page_path = page_path.replace(baseurl, "");
-    var page_tree = page_path.split('/');
-
-    Array.prototype.forEach.call(firstNavs, function (nav_first) {
-        if (page_tree[1] === nav_first.ariaLabel){
-            nav_first.classList.add('active');
-
-            var secondNavs = nav_first.querySelectorAll('.nav-second');
-
-            Array.prototype.forEach.call(secondNavs, function (nav_second) {
-                if (page_tree[2] === nav_second.ariaLabel){
-                    nav_second.classList.toggle('active');
-
-                    var thirdNavs = nav_second.querySelectorAll('.nav-third');
-
-                    Array.prototype.forEach.call(thirdNavs, function (nav_third) {
-                        if (page_tree[3] === nav_third.ariaLabel){
-                            nav_third.classList.toggle('active');
-                        }
-                    });
-                }
-            });
+    // Match destinations by URL, independently of display labels.
+    const currentPath = normalizePath(location.pathname);
+    document.querySelectorAll('#navigation .nav-list-link').forEach(link => {
+        const destination = normalizePath(link.getAttribute('href'));
+        const matches = destination === currentPath ||
+            (!destination.endsWith('.html') && destination !== '/' && currentPath.startsWith(destination + '/'));
+        if (!matches) return;
+        if (!link.hasAttribute('data-category-toggle')) {
+            link.parentElement.classList.add('selected');
+            if (destination === currentPath) link.setAttribute('aria-current', 'page');
+        }
+        let parent = link.closest('li');
+        while (parent) {
+            if (parent.querySelector(':scope > .nav-list')) parent.classList.add('active');
+            parent = parent.parentElement.closest('li');
         }
     });
 
@@ -82,15 +72,6 @@ document.addEventListener('DOMContentLoaded', function(){
             target.setAttribute('aria-pressed', open);
             const link = nav_item.querySelector('[data-category-toggle]');
             if (link) link.setAttribute('aria-expanded', open);
-        }
-    });
-
-    document.querySelectorAll('.nav-item').forEach((nav_item) => {
-        if (nav_item.parentNode.classList.contains('active')){
-            nav_item.classList.add('selected');
-        }
-        else {
-            nav_item.classList.remove('selected');
         }
     });
 
