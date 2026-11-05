@@ -4,7 +4,7 @@ page_type: page
 bookmark: ARCHIVES
 title: Archives
 archive: true
-date: 2026-11-06
+permalink: /archives/
 entries:
   - date: 2026-11-06
     summary: 블로그를 시작했어요
