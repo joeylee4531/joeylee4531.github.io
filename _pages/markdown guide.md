@@ -6,7 +6,6 @@ tags:
     - writing format
 date: "2023-09-05"
 thumbnail: "/assets/img/thumbnail/sample.png"
-bookmark: true
 ---
 
 # Headings
