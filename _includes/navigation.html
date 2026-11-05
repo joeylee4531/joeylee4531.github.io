@@ -13,11 +13,11 @@
         {% endif %}
 
         {% if p.bookmark %}
-            {% if p_level == 1 %}
+            {% if p_level <= 2 %}
                 {% assign first_level_pages = first_level_pages | push:p %}
-            {% elsif p_level == 2 %}
-                {% assign second_level_pages = second_level_pages | push:p %}
             {% elsif p_level == 3 %}
+                {% assign second_level_pages = second_level_pages | push:p %}
+            {% elsif p_level == 4 %}
                 {% assign third_level_pages = third_level_pages | push:p %}
             {% endif %}
         {% else %}
@@ -38,7 +38,7 @@
     <ul class="nav-list">
     {%- for node in first_level_pages -%}
         {%- assign node_url = node.url | remove: 'index.html' -%}
-        {%- assign node_title = node.path | remove: 'index.md' | split: "/" | last | remove: '.md' | replace: "_pages", "Home" -%}
+        {%- assign node_title = node.bookmark | default: node.path | remove: 'index.md' | split: "/" | last | remove: '.md' | replace: "_pages", "Home" -%}
         {%- assign children_list = second_level_pages 
             | where_exp: "item", "item.url contains node_url" -%}
         {%- assign num_children = children_list | size -%}
@@ -58,7 +58,7 @@
             <ul class="nav-list">
             {%- for child in children_list -%}
                 {%- assign child_url = child.url | remove: 'index.html' -%}
-                {%- assign child_title = child.path | remove: 'index.md' | split: "/" | last | remove: '.md' -%}
+                {%- assign child_title = child.bookmark | default: child.path | remove: 'index.md' | split: "/" | last | remove: '.md' -%}
                 {%- assign grand_children_list = third_level_pages 
                     | where_exp: "item", "item.url contains child_url" -%}
                 {%- assign num_grand_children = grand_children_list | size -%}
@@ -97,3 +97,5 @@
     {%- endfor -%}
     </ul>
 </nav>
+
+

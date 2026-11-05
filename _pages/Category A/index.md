@@ -1,3 +1,4 @@
 ---
 bookmark: CATEGORIES
+breadcrumb: true
 ---
