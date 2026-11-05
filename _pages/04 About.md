@@ -1,4 +1,6 @@
 ---
+nav_order: 4
+page_type: page
 bookmark: ABOUT
 ---
 안녕하세요! 아주대학교 사이버보안학과에 재학 중인 네로입니다.

@@ -1,2 +1,3 @@
 ---
+nav_hidden: true
 ---

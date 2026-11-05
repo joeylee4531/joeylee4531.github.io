@@ -1,4 +1,6 @@
 ---
+nav_order: 3
+page_type: page
 bookmark: ARCHIVES
 date: 2026-11-06
 ---

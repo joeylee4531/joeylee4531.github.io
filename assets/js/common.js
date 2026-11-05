@@ -1,3 +1,4 @@
+function normalizePath(p) { try { p = decodeURIComponent(p); } catch (_) {} return p.replace(/index\.html$/, "").replace(/\/$/, "") || "/"; }
 var baseurl = document.querySelector('meta[name="baseurl"]').content;
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -32,9 +33,15 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 
+    document.querySelectorAll('[data-category-toggle]').forEach(link => {
+        const item = link.closest('li');
+        if (normalizePath(location.pathname).startsWith(normalizePath(link.getAttribute('href')))) item.classList.add('active');
+        link.setAttribute('aria-expanded', item.classList.contains('active'));
+        link.addEventListener('click', event => { event.preventDefault(); const open = item.classList.toggle('active'); link.setAttribute('aria-expanded', open); const button = item.querySelector('.nav-list-expander'); if (button) button.setAttribute('aria-pressed', open); });
+    });
     // kept nav opened
-    var firstNavs = document.querySelectorAll('#nav-first');
-    var page_path = window.location.pathname.replace(/%20/g, " ");
+    var firstNavs = document.querySelectorAll('.nav-first');
+    var page_path = normalizePath(window.location.pathname);
     page_path = page_path.replace(baseurl, "");
     var page_tree = page_path.split('/');
 
@@ -42,13 +49,13 @@ document.addEventListener('DOMContentLoaded', function(){
         if (page_tree[1] === nav_first.ariaLabel){
             nav_first.classList.add('active');
 
-            var secondNavs = nav_first.querySelectorAll('#nav-second');
+            var secondNavs = nav_first.querySelectorAll('.nav-second');
 
             Array.prototype.forEach.call(secondNavs, function (nav_second) {
                 if (page_tree[2] === nav_second.ariaLabel){
                     nav_second.classList.toggle('active');
 
-                    var thirdNavs = nav_second.querySelectorAll('#nav-third');
+                    var thirdNavs = nav_second.querySelectorAll('.nav-third');
 
                     Array.prototype.forEach.call(thirdNavs, function (nav_third) {
                         if (page_tree[3] === nav_third.ariaLabel){
@@ -71,7 +78,10 @@ document.addEventListener('DOMContentLoaded', function(){
         if (target) {
             e.preventDefault();
             var nav_item = target.parentNode;
-            target.ariaPressed = nav_item.parentNode.classList.toggle('active');
+            const open = nav_item.parentNode.classList.toggle('active');
+            target.setAttribute('aria-pressed', open);
+            const link = nav_item.querySelector('[data-category-toggle]');
+            if (link) link.setAttribute('aria-expanded', open);
         }
     });
 
@@ -85,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
     // Change Datk/Light Theme
-    const themeButton = document.querySelectorAll("#btn-brightness");
+    const themeButton = document.querySelectorAll(".btn-brightness");
     const innerContent = document.querySelector('main');
 
     themeButton.forEach((btn) => {
@@ -145,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function(){
     }
 
     // search box
-    const searchButton = document.querySelectorAll("#btn-search");
+    const searchButton = document.querySelectorAll(".btn-search");
     const cancelButton = document.querySelector('#btn-clear');
     const searchPage = document.querySelector("#search");
 
@@ -287,15 +297,16 @@ function searchRelated(pages){
     if (!refBox) return;
 
     var relatedPosts = [];
-    var currPost = pages.find(obj => {return obj.url === location.pathname});
+    var currPost = pages.find(obj => {return normalizePath(obj.url) === normalizePath(location.pathname)});
 
-    let currTags = currPost.tags.split(', ');
+    if (!currPost) { refBox.hidden = true; return; }
+    let currTags = currPost.tags.split(', ').filter(Boolean);
     let currCategory = currPost.path.split(' > ').pop();
 
     for (var i = 0; i < pages.length; i++) {
         let page = pages[i];
 
-        if (page.type === 'category') continue;
+        if (page.type !== 'post') continue;
 
         if (page.title === currPost.title) continue;
 

@@ -112,13 +112,6 @@ document.addEventListener('DOMContentLoaded', function(){
         });
     }
 
-    // Move to Comment
-    document.getElementById('comments-counter').addEventListener('click', function(){
-        document.getElementById("giscus").scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-
     // Code highlighter
     if (currentTheme === 'dark'){
         // Disable highlighter default color theme
@@ -156,41 +149,6 @@ window.addEventListener('load', function(){
             $.outerHTML = $.innerHTML;
         });
     });
-
-    // Initialize/Change Giscus theme
-    var giscusTheme = "light";
-
-    const giscus_repo = document.querySelector('meta[name="giscus_repo"]').content;
-    const giscus_repoId = document.querySelector('meta[name="giscus_repoId"]').content;
-    const giscus_category = document.querySelector('meta[name="giscus_category"]').content;
-    const giscus_categoryId = document.querySelector('meta[name="giscus_categoryId"]').content;
-
-    if (giscus_repo !== undefined) {
-        let currentTheme = localStorage.getItem('theme');
-
-        if (currentTheme === 'dark'){
-            giscusTheme = "noborder_gray";
-        }
-
-        let giscusAttributes = {
-            "src": "https://giscus.app/client.js",
-            "data-repo": giscus_repo,
-            "data-repo-id": giscus_repoId,
-            "data-category": giscus_category,
-            "data-category-id": giscus_categoryId,
-            "data-mapping": "pathname",
-            "data-reactions-enabled": "1",
-            "data-emit-metadata": "1",
-            "data-theme": giscusTheme,
-            "data-lang": "en",
-            "crossorigin": "anonymous",
-            "async": "",
-        };
-
-        let giscusScript = document.createElement("script");
-        Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
-        document.body.appendChild(giscusScript);
-    }
 
     // code clipboard copy button
     async function copyCode(block) {

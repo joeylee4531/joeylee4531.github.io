@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     {%- assign page_tree = page.path | remove_first: "_pages/" | split: "/" -%}
     {%- assign page_level = page_tree.size -%}
     {% if page_tree.last == "index.md" %}
@@ -8,20 +8,12 @@
     {% else %}
         {%- assign page_type = "post" -%}
     {% endif %}
+    {% if page.page_type %}{% assign page_type = page.page_type %}{% endif %}
     <head>
         {% include head.html %}
         <link rel="preload" href="{{ site.profile_img | prepend: site.baseurl }}" as="image">
         <link rel="stylesheet" href="{{ '/assets/css/style.css' | prepend: site.baseurl }}">
         {% if page_type == "post" %}
-            {% if site.goatcounter_code %}
-                <script data-goatcounter="https://{{ site.goatcounter_code }}.goatcounter.com/count"
-                async src="//gc.zgo.at/count.js"></script>
-            {% endif %}
-
-            <meta name="giscus_repo" content="{{ site.giscus_repo }}">
-            <meta name="giscus_repoId" content="{{ site.giscus_repoId }}">
-            <meta name="giscus_category" content="{{ site.giscus_category }}">
-            <meta name="giscus_categoryId" content="{{ site.giscus_categoryId }}">
 
             {% if page.thumbnail %}
                 <style>

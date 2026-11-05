@@ -24,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
         const paginationLimit = 5;
         const pageCount = Math.ceil(listItems.length / paginationLimit);
+        if (!pageCount) { document.querySelector(".pagination").hidden = true; return; }
         let currentPage = 1;
 
         const disableButton = (button) => {
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function(){
         };
 
         const setCurrentPage = (pageNum) => {
-            currentPage = pageNum;
+            currentPage = Math.max(1, Math.min(pageCount, Number(pageNum) || 1));
             
             handleActivePageNumber();
             handlePageButtonsStatus();

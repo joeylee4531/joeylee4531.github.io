@@ -29,8 +29,8 @@
     &:hover { background-color:rgba(212, 201, 191, 0.7); }
   }
   #btn-nav { right:0; }
-  #btn-search { right:38px; }
-  #btn-brightness { right:76px; }
+  .btn-search { right:38px; }
+  .btn-brightness { right:76px; }
 
   .ico-dark {
     display:block;
@@ -190,8 +190,8 @@
 
 .side-banner {
   button { font-size:1.75rem; }
-  #btn-search { right:60px; }
-  #btn-brightness { right:120px; }
+  .btn-search { right:60px; }
+  .btn-brightness { right:120px; }
 }
 
 .site-tab { 
@@ -227,8 +227,8 @@
     display:none;
     font-size:1.5rem;
   }
-  #btn-search { right:69px; }
-  #btn-brightness { right:138px; }
+  .btn-search { right:69px; }
+  .btn-brightness { right:138px; }
 }
 
 .site-avatar img { display:inline-block; }
