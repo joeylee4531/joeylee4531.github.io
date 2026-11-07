@@ -1,4 +1,10 @@
 {% unless page.archive or page.hide_post_header %}
+{% if page.compact_header %}
+<header class="compact-post-header">
+    <h1 class="compact-post-title">{{ page.title | escape }}</h1>
+    <time class="compact-post-date" datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+</header>
+{% else %}
 <div class="post-header">
     <div class="thumbnail">
         <div class="transbox">
@@ -39,6 +45,7 @@
         </span>
     {%- endfor -%}
 </div>
+{% endif %}
 {% endunless %}
 <main{% if page.archive %} class="archive-main"{% elsif page.resume %} class="resume-main"{% endif %}>
     {{ content }}

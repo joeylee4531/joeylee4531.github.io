@@ -8,7 +8,7 @@
         {{ page.title | default: category_title }}
     {% endif %}
 </h1>
-<div id="category-list">
+<div id="category-list"{% if page.list_style == "simple" %} class="simple-list"{% endif %}>
     <ul class="paginated-list" data-current-page="1" aria-live="polite">
     {%- for sub_page in list_pages -%}
         {%- assign page_url = page.url | remove: 'index.html' -%}
@@ -17,6 +17,7 @@
             {%- assign post_counts = post_counts | plus:1 -%}
             <li class="paginated-item">
                 <article class="post-list-row">
+                    {% unless page.list_style == "simple" %}
                     <div class="thumbnail_zone">
                         {% assign thumbnail_url = sub_page.thumbnail | default: '/assets/img/thumbnail/empty.jpg' %}
                         {% assign thumbnail_prefix = thumbnail_url | slice: 0, 1 %}
@@ -25,6 +26,7 @@
                             <img src="{{ thumbnail_url | escape }}" alt="" loading="lazy" width="160" height="160">
                         </a>
                     </div>
+                    {% endunless %}
                     <div class="box_contents">
                         <a href="{{ sub_page.url | prepend: site.baseurl }}"><h2 class="title_post">{{ sub_page.title }}</h2></a>
                         <a href="{{ sub_page.url | prepend: site.baseurl }}" class="txt_post">
@@ -32,6 +34,7 @@
                         </a>
                         <div class="info-post">
                             {%- assign sub_page_tree = sub_page.path | split: "/" -%}
+                            {% unless page.list_style == "simple" %}
                             {% if sub_page_tree.size > 2 %}
                                 {% assign category_path = sub_page.path | split: '/' | pop | join: '/' | append: '/index.md' %}
                                 {% assign category_page = site.pages | where: 'path', category_path | first %}
@@ -39,9 +42,10 @@
                             {% else %}
                                 <span class="category">None</span>
                             {% endif %}
+                            {% endunless %}
                             {%- assign posting_date = sub_page.date | date: "%Y-%m-%d" -%}
                             {% if posting_date != "1900-01-01" %}
-                                <span class="date">· {{ sub_page.date | date: "%Y-%m-%d" }}</span>
+                                <span class="date">{% unless page.list_style == "simple" %}· {% endunless %}{{ sub_page.date | date: "%Y-%m-%d" }}</span>
                             {% endif %}
                         </div>
                     </div>

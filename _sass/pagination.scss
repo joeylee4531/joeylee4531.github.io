@@ -193,6 +193,11 @@
   a:focus-visible { outline:2px solid var(--list-blue); outline-offset:4px; border-radius:6px; }
 }
 .category-header { color:#191f28; border:0; text-decoration:none; font-size:28px; letter-spacing:-.8px; margin-bottom:16px; }
+#category-list.simple-list {
+  .post-list-row { padding:22px 8px; border-radius:0; }
+  .title_post { font-size:18px; font-weight:600; }
+  .txt_post { margin-bottom:10px; }
+}
 body.dark-theme {
   #category-list {
     --list-text:#f2f4f6;
@@ -215,6 +220,10 @@ body.dark-theme {
     .info-post { font-size:11px; gap:6px; }
   }
   .category-header { margin:0 16px 8px; font-size:24px; }
+  #category-list.simple-list {
+    .post-list-row { padding:18px 4px; }
+    .title_post { font-size:16px; }
+  }
 }
 @media (prefers-reduced-motion:reduce) {
   #category-list .post-list-row, #category-list .thumbnail_post img { transition:none; }

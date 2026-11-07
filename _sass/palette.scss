@@ -147,7 +147,10 @@ body .side-banner {
 
 // Separate the utility controls from the content below them.
 body .side-banner .site-tab { margin-bottom:24px; }
-body .tools { top:24px; }
+body .tools { position:absolute; top:24px; }
+@include mq(desktop) {
+  body .sidebar-right { position:absolute; top:0; }
+}
 body .toc { top:128px; }
 
 // Leave a clear vertical gap below the top utility buttons.
