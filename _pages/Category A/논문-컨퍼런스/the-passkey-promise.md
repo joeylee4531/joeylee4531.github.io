@@ -12,6 +12,7 @@ compact_header: true
 실험 결과와 한계를 살펴보고, 마지막에는 배운 점과 직접 확인해보고 싶은 질문을 정리했다.
 
 ## 논문 정보
+{: data-toc-title="[IEEE S&P 2026] 패스키는 정말 편리할까?" data-toc-top="true"}
 
 Munich University of Applied Sciences의 **Erwin Kupris와 Thomas Schreck**이 쓴 논문으로, **IEEE S&P 2026**에 게재됐다. 정식 제목은 *The Passkey Promise: A Comparative Usability Study of MFA Methods*다.
 
@@ -163,6 +164,7 @@ Munich University of Applied Sciences의 **Erwin Kupris와 Thomas Schreck**이 �
 이 논문에서 확인한 것은 패스키의 가능성이다. 앞으로 확인하고 싶은 것은 그 가능성이 다른 기기와 정책, 그리고 기기를 잃은 상황에서도 유지되는지다.
 
 ## 참고 자료
+{: data-toc-exclude="true"}
 
 1. Erwin Kupris and Thomas Schreck. **The Passkey Promise: A Comparative Usability Study of MFA Methods.** IEEE S&P 2026, pp. 3647–3666. [논문·DOI](https://doi.org/10.1109/SP63933.2026.00055)
 2. 저자 공개 저장소. [상세 부록·실험 자료](https://github.com/hm-seclab/paper-passkey-promise)

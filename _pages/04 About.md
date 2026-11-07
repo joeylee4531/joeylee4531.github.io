@@ -9,14 +9,13 @@ resume: true
 <div class="resume">
 <header class="resume-hero">
 <div class="resume-identity">
-<p class="resume-eyebrow">ABOUT ME</p>
 <h1>안녕하세요, <span>로네</span>입니다.</h1>
 <p class="resume-role">아주대학교 사이버보안학과 · 재학 중</p>
 </div>
-<img class="resume-avatar" src="{{ '/assets/img/profile-gudetama.png' | relative_url }}" alt="로네 프로필" width="88" height="88">
+<img class="resume-avatar" src="{{ '/assets/img/profile-gudetama.png' | relative_url }}" alt="로네 프로필" width="132" height="132">
 </header>
 <div class="resume-intro">
-<p>학교에 입학한 뒤 보안 공부를 시작해, 한 걸음씩 배워가고 있습니다. 새롭게 알게 된 내용을 꾸준히 기록하고 나누며 성장하고자 합니다.</p>
+<p>학교에 입학한 뒤 보안 공부를 시작해, 한 걸음씩 배워가고 있습니다.<br>새롭게 알게 된 내용을 꾸준히 기록하고 나누며 성장하고자 합니다.</p>
 </div>
 <nav class="resume-contact" aria-label="연락처">
 <a href="mailto:{{ site.email }}"><span class="resume-link-label">EMAIL</span>{{ site.email }}<span aria-hidden="true">↗</span></a>

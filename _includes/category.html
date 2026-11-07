@@ -15,7 +15,7 @@
                 {% if crumb_page %}
                     {% unless forloop.first %}<span aria-hidden="true"> &gt; </span>{% endunless %}
                     {% if crumb_page.bookmark == 'CATEGORIES' %}
-                        <a href="{{ crumb_page.url | remove: 'index.html' | relative_url }}">categories</a>
+                        <span>categories</span>
                     {% elsif crumb_page.path == page.path %}
                         <span aria-current="page">{{ crumb_page.bookmark | default: crumb_page.title | escape }}</span>
                     {% else %}

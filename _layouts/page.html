@@ -61,7 +61,11 @@
             <div class="inner-content">
                 {% include category.html %}
                 {% if page_type == "category" %}
-                    {% include pagination.html %}
+                    {% if page.bookmark == 'CATEGORIES' %}
+                        {% include category-directory.html %}
+                    {% else %}
+                        {% include pagination.html %}
+                    {% endif %}
                 {% else %}
                     {% include post.html %}
                 {% endif %}

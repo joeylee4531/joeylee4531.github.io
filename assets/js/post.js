@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function(){
     let currentTheme = localStorage.getItem('theme') || 'dark';
 
     // tocbot
-    var headings = innerContent.querySelectorAll('h1, h2');
+    var headings = innerContent.querySelectorAll('h1:not([data-toc-exclude]), h2:not([data-toc-exclude])');
     var prevHead;
 
     const tocBorad = document.querySelector(".toc-board");
@@ -16,14 +16,18 @@ document.addEventListener('DOMContentLoaded', function(){
         let itemLink = document.createElement("a");
         itemLink.classList.add("toc-link");
         itemLink.id = "toc-id-" + heading.textContent;
-        itemLink.textContent = heading.textContent;
+        itemLink.textContent = heading.dataset.tocTitle || heading.textContent;
 
         tocItem.append(itemLink);
 
         itemLink.addEventListener('click', function(){
-            heading.scrollIntoView({
-                behavior: 'smooth'
-            });
+            tocBorad.querySelectorAll('.toc-link').forEach(link => link.classList.remove('is-active-link'));
+            itemLink.classList.add('is-active-link');
+            if (heading.dataset.tocTop === 'true') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                heading.scrollIntoView({ behavior: 'smooth' });
+            }
         });
 
         if (heading.tagName == 'H1'){
@@ -51,26 +55,9 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 
-    setInterval(function(){
-        var scrollPos = document.documentElement.scrollTop;
-
-        Array.from(tocBorad.querySelectorAll('.toc-link')).forEach(function(link){
-            link.classList.remove('is-active-link');
-        });
-
-        var currHead;
-
-        Array.from(headings).forEach(function(heading){
-            let headPos = heading.getBoundingClientRect().top + window.scrollY - 512;
-
-            if (scrollPos > headPos) currHead = heading;
-        });
-
-        if (currHead != undefined){
-            let tocLink = document.getElementById("toc-id-" + currHead.textContent);
-            tocLink.classList.add('is-active-link');
-        }
-    }, 200);
+    // Keep the highlight on the selected item instead of tracking scroll position.
+    const firstTocLink = tocBorad.querySelector('.toc-link');
+    if (firstTocLink) firstTocLink.classList.add('is-active-link');
 
     }
 

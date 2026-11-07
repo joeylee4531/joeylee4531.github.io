@@ -1,5 +1,6 @@
 #post main.resume-main {
-  padding:16px 40px 40px;
+  padding:0 40px 40px;
+  margin-top:-8px;
   font-family:var(--font-sans);
   .resume, .resume * { box-sizing:border-box; margin:0; }
   .resume { max-width:740px; margin:0 auto; }
@@ -8,12 +9,12 @@
   p { text-align:left; font-size:14px; line-height:1.85; color:var(--text-secondary); }
   a { color:var(--accent); }
   a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; border-radius:6px; }
-  .resume-hero { display:flex; gap:24px; align-items:center; justify-content:space-between; padding:16px 0 24px; }
+  .resume-hero { display:flex; gap:24px; align-items:center; justify-content:space-between; padding:0 0 4px; }
   .resume-eyebrow { color:var(--accent); font-size:11px; font-weight:700; letter-spacing:1.6px; margin-bottom:16px; }
   h1 { font-size:32px; line-height:1.5; font-weight:700; letter-spacing:-1.2px; color:var(--text-primary); }
   h1 span { color:var(--accent); }
-  .resume-role { margin-top:14px; color:var(--text-muted); font-size:13px; }
-  .resume-avatar { width:88px; height:88px; flex:0 0 88px; border-radius:24px; object-fit:cover; object-position:50% 65%; background:var(--surface-soft); }
+  .resume-role { margin-top:6px; color:var(--text-muted); font-size:13px; }
+  .resume-avatar { width:132px; height:132px; flex:0 0 132px; margin-right:32px; border-radius:24px; object-fit:cover; object-position:50% 65%; background:var(--surface-soft); }
   .resume-intro { padding-bottom:24px; max-width:600px; }
   .resume-contact { display:flex; flex-wrap:wrap; gap:10px; padding-bottom:32px; }
   .resume-contact a { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:10px; background:var(--surface-soft); font-size:12px; color:var(--text-secondary); overflow-wrap:anywhere; transition:background .15s; }
@@ -42,10 +43,10 @@
 }
 @media (max-width:768px) {
   #post main.resume-main {
-    padding:8px 20px 32px;
+    padding:0 20px 32px;
     h1 { font-size:25px; letter-spacing:-.8px; }
     .resume-hero { gap:16px; }
-    .resume-avatar { width:64px; height:64px; flex-basis:64px; border-radius:20px; }
+    .resume-avatar { width:92px; height:92px; flex-basis:92px; margin-right:16px; border-radius:20px; }
     .resume-section { grid-template-columns:1fr; gap:16px; padding:24px 0; }
     .resume-section-label { display:flex; gap:10px; align-items:baseline; }
     .resume-section-label p { margin:0; }
