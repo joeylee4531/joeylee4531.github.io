@@ -5,6 +5,7 @@ $baseurl: "{{ site.baseurl }}";
 html, body {
   margin:0;
   padding:0;
+  overflow-x:clip;
 }
 
 
@@ -50,7 +51,7 @@ input::-webkit-search-results-decoration{
 @import 'layout';
 
 :root{
-  --pagewidth-desktop:calc(max(min(100vw - #{$sidebarwd} - 2rem, #{$contentwd}), 44rem));
+  --pagewidth-desktop:min(calc(100% - #{$sidebarwd} - 2rem), #{$contentwd});
 }
 
 @import "sidebar";

@@ -51,6 +51,7 @@
 
 #post {
   max-width:#{$contentwd};
+  min-width:0;
   margin:auto;
 }
 
@@ -224,7 +225,7 @@ main {
   font-size:1rem;
   line-height:200%;
   position:relative;
-  overflow-wrap:break-word;
+  overflow-wrap:anywhere;
   word-wrap:break-word;
 
   * { margin:auto; }
@@ -379,12 +380,11 @@ main {
     }
   }
 
-  .table-wrapper { overflow-x:auto; }
+  .table-wrapper { max-width:100%; overflow-x:auto; }
 
   table {
     display:block;
-    max-width:-moz-fit-content;
-    max-width:fit-content;
+    max-width:100%;
     overflow-x:auto;
     white-space:nowrap;
     position:relative;
