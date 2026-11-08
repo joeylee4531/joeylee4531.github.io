@@ -6,6 +6,12 @@ title: Archives
 archive: true
 permalink: /archives/
 entries:
+  - date: 2026-11-08
+    summary: "'나'에 대해 기록하기"
+    content: >-
+      나의 가치관과 나이츠프론티어 지원동기, 7개월 동안의 목표를 기록했습니다.
+      재수와 군 복무 중 편입 경험을 돌아보며, 지금의 선택 기준이 생긴 이유를 정리했습니다.
+      [본문 읽기](/Category%20A/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C/knights-frontier-start.html)
   - date: 2026-11-07
     summary: 첫 보안 논문 리뷰 작성
     content: >-
