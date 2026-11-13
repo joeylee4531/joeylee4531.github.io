@@ -6,6 +6,12 @@ title: Archives
 archive: true
 permalink: /archives/
 entries:
+  - date: 2026-11-14
+    summary: 보안 공부의 첫걸음을 돌아보며
+    content: >-
+      WHOIS에서 시작한 보안 공부를 돌아보고, 현재 어렵게 느끼는 포너블과 아직 낯선 포렌식을 어떻게 공부할지 정리했습니다.
+      나이츠 프론티어 미션과 동아리 과제, 드림핵을 통해 공부를 이어갈 계획을 기록했습니다.
+      [회고 글 읽기](/Category%20A/%EB%B8%94%EB%A1%9C%EA%B7%B8-%EA%B8%B0%EC%88%A0%EB%AC%B8%EC%84%9C/security-learning-retrospective.html)
   - date: 2026-11-08
     summary: "'나'에 대해 기록하기"
     content: >-
