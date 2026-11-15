@@ -6,6 +6,13 @@ title: Archives
 archive: true
 permalink: /archives/
 entries:
+  - date: 2026-11-15
+    summary: "퍼징이 무엇인가?"
+    content: >-
+      퍼징의 기본 개념과 주요 용어를 공부하고, AFL++·libFuzzer·Jackalope의 차이를 정리했습니다.
+      WSL Ubuntu에서 AFL++로 교육용 C 프로그램을 퍼징해 BUG 입력을 찾고, 같은 입력으로 크래시를 재현했습니다.
+      실습 중 만난 core_pattern 설정 문제와 암기용 용어 정리도 함께 기록했습니다.
+      [퍼징 글 읽기](/Category%20A/Bug-Bounty/fuzzing-aflpp-basics.html)
   - date: 2026-11-14
     summary: 보안 공부의 첫걸음을 돌아보며
     content: >-
