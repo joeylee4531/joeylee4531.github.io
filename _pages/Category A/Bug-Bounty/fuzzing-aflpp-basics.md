@@ -69,10 +69,10 @@ AFL++의 파일 입력 방식에서는 실행 명령과 입력 파일의 관계�
 | 항목 | 확인한 값 |
 |---|---|
 | 운영체제 | WSL의 Ubuntu 24.04.4 LTS |
-| CPU 아키텍처 | `x86_64` |
-| AFL++ | `4.09c` |
-| Clang | `17.0.6` |
-| 계측 모드 | `LLVM-PCGUARD` |
+| CPU 아키텍처 | x86_64 |
+| AFL++ | 4.09c |
+| Clang | 17.0.6 |
+| 계측 모드 | LLVM-PCGUARD |
 
 환경은 아래 명령으로 확인했다.
 
@@ -312,7 +312,7 @@ sudo tee /proc/sys/kernel/core_pattern < core_pattern.before.txt
 | Crash, 크래시 | 프로그램이 비정상 종료되는 현상 | `BUG` 입력에서 `abort()` 호출 |
 | Reproduction, 재현 | 저장한 입력으로 같은 오류가 다시 나는지 확인하는 작업 | `./target "$crash_file"` 실행 |
 
-**흐름으로 기억하기:** seed 준비 → 입력 변이 → target 실행 → 커버리지와 오류 관찰 → 탐색에 유용한 입력 보관·크래시 입력 저장 → 크래시 재현.
+<span class="fuzzing-highlight">흐름으로 기억하기:</span> seed 준비 → 입력 변이 → target 실행 → 커버리지와 오류 관찰 → 탐색에 유용한 입력 보관·크래시 입력 저장 → 크래시 재현.
 
 ### 퍼징의 분류
 
@@ -324,7 +324,7 @@ sudo tee /proc/sys/kernel/core_pattern < core_pattern.before.txt
 | Grey-box | 커버리지 같은 제한된 내부 정보를 활용한다. |
 | White-box | 코드와 경로 조건을 상세히 분석해 입력 생성에 활용한다. |
 
-**분류 기준은 두 가지다.** Mutation·generation은 입력을 만드는 방식이고, black·grey·white는 내부 정보를 얼마나 활용하는지에 따른 구분이다. 이번 실습은 mutation-based이면서 coverage-guided grey-box인 사례다.
+<span class="fuzzing-highlight">분류 기준은 두 가지다.</span> Mutation·generation은 입력을 만드는 방식이고, black·grey·white는 내부 정보를 얼마나 활용하는지에 따른 구분이다. 이번 실습은 mutation-based이면서 coverage-guided grey-box인 사례다.
 
 ### 코드와 실행에 등장한 용어
 
@@ -344,11 +344,32 @@ sudo tee /proc/sys/kernel/core_pattern < core_pattern.before.txt
 
 | 도구 | 쉽게 기억하기 |
 |---|---|
-| AFL++ | 이번 실습에서는 **컴파일할 때 계측**해 프로그램을 검사한다. |
-| libFuzzer | **프로그램 안의 특정 함수**를 반복 호출해 검사한다. |
-| Jackalope | **이미 만들어진 실행 파일을 실행 중에 계측**해 검사한다. |
+| AFL++ | 이번 실습에서는 <span class="fuzzing-highlight">컴파일할 때 계측</span>해 프로그램을 검사한다. |
+| libFuzzer | <span class="fuzzing-highlight">프로그램 안의 특정 함수</span>를 반복 호출해 검사한다. |
+| Jackalope | <span class="fuzzing-highlight">이미 만들어진 실행 파일을 실행 중에 계측</span>해 검사한다. |
 
-**마지막으로 구분할 것:** 새 커버리지는 새로운 실행 정보이고, 크래시는 비정상 종료다. 크래시를 찾았더라도 원인을 분석하기 전에는 실제 취약점이나 악용 가능성이 확인됐다고 볼 수 없다.
+<span class="fuzzing-highlight">마지막으로 구분할 것:</span> 새 커버리지는 새로운 실행 정보이고, 크래시는 비정상 종료다. 크래시를 찾았더라도 원인을 분석하기 전에는 실제 취약점이나 악용 가능성이 확인됐다고 볼 수 없다.
+
+<style>
+#post:has(.fuzzing-highlight) :is(code:not(pre code), .fuzzing-highlight) {
+  background: rgb(245, 228, 167);
+  color: #574509;
+  border: 0;
+  border-radius: 6px;
+  padding: .12em .4em;
+  font-family: inherit;
+  font-size: .95em;
+  font-weight: 600;
+  vertical-align: baseline;
+  top: auto;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.dark-theme #post:has(.fuzzing-highlight) :is(code:not(pre code), .fuzzing-highlight) {
+  background: rgb(245, 228, 167);
+  color: #574509;
+}
+</style>
 
 <!-- HUMANIZE-SUMMARY -->
 <!--
