@@ -1,0 +1,13 @@
+<div class="archive-timeline">
+{% for entry in page.entries %}
+<details class="archive-entry">
+<summary>
+<span class="archive-node" aria-hidden="true"></span>
+<time datetime="{{ entry.date | date: '%Y-%m-%d' }}">{{ entry.date | date: '%Y.%m.%d' }}</time>
+<span class="archive-summary">{{ entry.summary | escape }}</span>
+<svg class="archive-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+</summary>
+<div class="archive-body">{{ entry.content | markdownify }}</div>
+</details>
+{% endfor %}
+</div>
