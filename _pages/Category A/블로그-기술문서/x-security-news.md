@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-18
+    summary: PHP에 이어 자바에서도 고위험 취약점 발견
+    content: >-
+      PHP에 이어 자바에서도 고위험 취약점이 발견돼 정부가 긴급 점검을 권고했다. <a href="https://x.com/yonhaptweet/status/2122826111256334528" aria-label="연합뉴스 X 게시물 보기" title="연합뉴스 X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-17
     summary: AI 부정행위 우려 속 수능 예정대로 시행
     content: >-
