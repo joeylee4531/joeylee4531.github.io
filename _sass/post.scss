@@ -673,13 +673,15 @@ main {
 
 #post { margin-left:calc((100vw - #{$contentwd})/2); }
 
+#post.article-layout { margin-left:calc((100% - var(--pagewidth-desktop)) / 2); }
+
 .top-arrow { left:calc(50vw + #{$contentwd}/2 - 4rem); }
 
 }
 
-// Keep compact articles centered in the space beside the navigation.
+// Keep articles centered in the space beside the navigation.
 @media (min-width:1025px) and (max-width:1440px) {
-  #post:has(.compact-post-header) {
+  #post.article-layout {
     margin-left:calc(#{$sidebarwd} + (100% - #{$sidebarwd} - var(--pagewidth-desktop)) / 2);
   }
 }

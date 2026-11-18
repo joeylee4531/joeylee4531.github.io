@@ -52,7 +52,7 @@
         </script>
         <canvas id="stars" width="100%" height="100%"></canvas>
         {% include sidebar.html %}
-        <div id="post">
+        <div id="post"{% if page_type == "post" %} class="article-layout"{% endif %}>
             <div class="inner-header">
                 <span class="dot" style="background-color: #F86158;"></span>
                 <span class="dot" style="background-color: #FBBF2D;"></span>
