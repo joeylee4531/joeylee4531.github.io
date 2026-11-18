@@ -21,8 +21,6 @@ document.addEventListener('DOMContentLoaded', function(){
         tocItem.append(itemLink);
 
         itemLink.addEventListener('click', function(){
-            tocBorad.querySelectorAll('.toc-link').forEach(link => link.classList.remove('is-active-link'));
-            itemLink.classList.add('is-active-link');
             if (heading.dataset.tocTop === 'true') {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             } else {
@@ -55,9 +53,47 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     });
 
-    // Keep the highlight on the selected item instead of tracking scroll position.
-    const firstTocLink = tocBorad.querySelector('.toc-link');
-    if (firstTocLink) firstTocLink.classList.add('is-active-link');
+    const tocLinks = Array.from(tocBorad.querySelectorAll('.toc-link'));
+    let activeIndex = -1;
+    let scrollFrame = null;
+
+    function updateActiveSection() {
+        scrollFrame = null;
+        let nextIndex = 0;
+        const readingLine = window.innerHeight * 0.2;
+
+        for (let index = 0; index < headings.length; index++) {
+            if (headings[index].getBoundingClientRect().top > readingLine) break;
+            nextIndex = index;
+        }
+
+        const page = document.scrollingElement;
+        if (page.scrollTop > 0 && page.scrollTop + page.clientHeight >= page.scrollHeight - 2) {
+            nextIndex = tocLinks.length - 1;
+        }
+
+        if (nextIndex === activeIndex) return;
+        if (activeIndex >= 0) {
+            tocLinks[activeIndex].classList.remove('is-active-link');
+            tocLinks[activeIndex].removeAttribute('aria-current');
+        }
+        tocLinks[nextIndex].classList.add('is-active-link');
+        tocLinks[nextIndex].setAttribute('aria-current', 'location');
+        activeIndex = nextIndex;
+    }
+
+    function scheduleActiveSectionUpdate() {
+        if (scrollFrame === null) {
+            scrollFrame = window.requestAnimationFrame(updateActiveSection);
+        }
+    }
+
+    if (tocLinks.length > 0) {
+        updateActiveSection();
+        window.addEventListener('scroll', scheduleActiveSectionUpdate, { passive: true });
+        window.addEventListener('resize', scheduleActiveSectionUpdate);
+        window.addEventListener('load', scheduleActiveSectionUpdate);
+    }
 
     }
 

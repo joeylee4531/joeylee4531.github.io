@@ -250,21 +250,6 @@ main {
   a {
     color:dodgerblue;
     text-decoration:none;
-
-    &::before {
-      position:absolute;
-      content:attr(data-content);
-      color:midnightblue;
-      text-decoration:underline;
-      text-decoration-style:wavy;
-      text-underline-offset:4px;
-      text-decoration-color:midnightblue;
-      clip-path:polygon(0 0, 0 0, 0% 100%, 0 100%);
-      transition:clip-path .25s;
-    }
-    &:hover::before {
-      clip-path:polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
   }
 
   p, ul, table, div { margin-bottom:3rem; }
@@ -709,4 +694,23 @@ main {
   width:fit-content;
   max-width:100%;
   margin-inline:auto;
+}
+
+#post main:not(.original-emphasis) code:not(pre code) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 400;
+  position: static;
+  vertical-align: baseline;
+}
+
+#post main:not(.original-emphasis) :is(strong, .key-term, .review-section-start) {
+  color: rgb(255, 161, 92);
+  font-weight: 600;
+  text-decoration: none;
 }

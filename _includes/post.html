@@ -49,7 +49,7 @@
 </div>
 {% endif %}
 {% endunless %}
-<main{% if page.archive or page.entries %} class="archive-main"{% elsif page.resume %} class="resume-main"{% endif %}>
+<main{% if page.archive or page.entries %} class="archive-main"{% elsif page.resume %} class="resume-main"{% elsif page.original_emphasis %} class="original-emphasis"{% endif %}>
     {{ content }}
 </main>
 <div class="top-arrow">

@@ -3,6 +3,7 @@ title: "퍼징이 무엇인가?"
 date: "2026-11-15 00:00:00 +0900"
 description: "퍼징의 기본 개념, AFL++·libFuzzer·Jackalope의 차이, WSL Ubuntu에서 진행한 AFL++ 실습 기록"
 compact_header: true
+original_emphasis: true
 ---
 
 이번 공부는 퍼징이 무엇인지 배우고 여러 퍼저의 차이를 정리하는 것이다. 이 글에서는 먼저 퍼징을 이해하는 데 필요한 개념을 설명하고 AFL++로 작은 C 프로그램의 크래시 입력을 찾은 과정을 기록한다. libFuzzer와 Jackalope는 공식 문서를 바탕으로 비교했으며 직접 실행한 도구는 AFL++다.
@@ -312,7 +313,7 @@ sudo tee /proc/sys/kernel/core_pattern < core_pattern.before.txt
 | Crash, 크래시 | 프로그램이 비정상 종료되는 현상 | `BUG` 입력에서 `abort()` 호출 |
 | Reproduction, 재현 | 저장한 입력으로 같은 오류가 다시 나는지 확인하는 작업 | `./target "$crash_file"` 실행 |
 
-<span class="fuzzing-highlight">흐름으로 기억하기:</span> seed 준비 → 입력 변이 → target 실행 → 커버리지와 오류 관찰 → 탐색에 유용한 입력 보관·크래시 입력 저장 → 크래시 재현.
+흐름으로 기억하기: seed 준비 → 입력 변이 → target 실행 → 커버리지와 오류 관찰 → 탐색에 유용한 입력 보관·크래시 입력 저장 → 크래시 재현.
 
 ### 퍼징의 분류
 
@@ -324,7 +325,7 @@ sudo tee /proc/sys/kernel/core_pattern < core_pattern.before.txt
 | Grey-box | 커버리지 같은 제한된 내부 정보를 활용한다. |
 | White-box | 코드와 경로 조건을 상세히 분석해 입력 생성에 활용한다. |
 
-<span class="fuzzing-highlight">분류 기준은 두 가지다.</span> Mutation·generation은 입력을 만드는 방식이고, black·grey·white는 내부 정보를 얼마나 활용하는지에 따른 구분이다. 이번 실습은 mutation-based이면서 coverage-guided grey-box인 사례다.
+분류 기준은 두 가지다. Mutation·generation은 입력을 만드는 방식이고, black·grey·white는 내부 정보를 얼마나 활용하는지에 따른 구분이다. 이번 실습은 mutation-based이면서 coverage-guided grey-box인 사례다.
 
 ### 코드와 실행에 등장한 용어
 
@@ -339,6 +340,7 @@ sudo tee /proc/sys/kernel/core_pattern < core_pattern.before.txt
 | Exit status, 종료 상태 | 프로그램이 어떻게 끝났는지 셸에서 확인하는 값이다. `$?`로 직전 명령의 값을 확인한다. |
 | `134` | 이번 셸에서 `SIGABRT` 종료를 `128 + 6`으로 표시한 값이다. |
 | `core_pattern` | 크래시 때 코어 덤프 파일 이름이나 외부 처리 방식 등을 정하는 커널 설정이다. |
+{: .fuzzing-plain-terms}
 
 ### 세 퍼저를 구분하는 키워드
 
@@ -348,26 +350,24 @@ sudo tee /proc/sys/kernel/core_pattern < core_pattern.before.txt
 | libFuzzer | <span class="fuzzing-highlight">프로그램 안의 특정 함수</span>를 반복 호출해 검사한다. |
 | Jackalope | <span class="fuzzing-highlight">이미 만들어진 실행 파일을 실행 중에 계측</span>해 검사한다. |
 
-<span class="fuzzing-highlight">마지막으로 구분할 것:</span> 새 커버리지는 새로운 실행 정보이고, 크래시는 비정상 종료다. 크래시를 찾았더라도 원인을 분석하기 전에는 실제 취약점이나 악용 가능성이 확인됐다고 볼 수 없다.
+마지막으로 구분할 것: 새 커버리지는 새로운 실행 정보이고, 크래시는 비정상 종료다. 크래시를 찾았더라도 원인을 분석하기 전에는 실제 취약점이나 악용 가능성이 확인됐다고 볼 수 없다.
 
 <style>
 #post:has(.fuzzing-highlight) :is(code:not(pre code), .fuzzing-highlight) {
-  background: rgb(245, 228, 167);
-  color: #574509;
+  margin: 0;
+  padding: 0;
   border: 0;
-  border-radius: 6px;
-  padding: .12em .4em;
-  font-family: inherit;
-  font-size: .95em;
+  border-radius: 0;
+  background: transparent;
+  color: rgb(255, 161, 92);
+  font: inherit;
   font-weight: 600;
+  position: static;
   vertical-align: baseline;
-  top: auto;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
 }
-.dark-theme #post:has(.fuzzing-highlight) :is(code:not(pre code), .fuzzing-highlight) {
-  background: rgb(245, 228, 167);
-  color: #574509;
+#post .fuzzing-plain-terms td:first-child code {
+  color: inherit;
+  font-weight: 400;
 }
 </style>
 
