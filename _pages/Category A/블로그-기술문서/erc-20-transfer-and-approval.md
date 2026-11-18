@@ -1,6 +1,6 @@
 ---
 title: "ERC-20에서 토큰 전송과 사용 승인은 어떻게 다를까?"
-date: "2026-11-18 00:00:00 +0900"
+date: "2026-11-18"
 description: "ERC-20의 함수와 이벤트를 정리하고 토큰 사용 승인과 실제 예치 흐름을 살펴봅니다."
 compact_header: true
 permalink: /erc-20-transfer-and-approval/

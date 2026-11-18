@@ -1,6 +1,6 @@
 ---
 title: "퍼징이 무엇인가?"
-date: "2026-11-15 00:00:00 +0900"
+date: "2026-11-15"
 description: "퍼징의 기본 개념, AFL++·libFuzzer·Jackalope의 차이, WSL Ubuntu에서 진행한 AFL++ 실습 기록"
 compact_header: true
 original_emphasis: true
