@@ -37,7 +37,7 @@ ERC-20은 이런 연동 문제를 줄이기 위해 등장했다. 토큰 개발�
 | `transferFrom(from, to, value)` | 권한을 받은 주소가 호출해 `from`의 토큰을 `to`로 옮긴다. |
 {: .plain-term-table}
 
-`transfer`, `approve`{: .key-term}, `transferFrom`의 반환값은 성공 여부를 나타내는 `bool`{: .key-term}이다. 명세는 이 함수를 호출하는 코드가 `false`{: .key-term}를 돌려받는 경우도 처리하도록 요구한다. [ERC-20 함수 명세](https://eips.ethereum.org/EIPS/eip-20#methods)
+`transfer`, `approve`, `transferFrom`의 반환값은 성공 여부를 나타내는 `bool`{: .key-term}이다. 명세는 이 함수를 호출하는 코드가 `false`{: .key-term}를 돌려받는 경우도 처리하도록 요구한다. [ERC-20 함수 명세](https://eips.ethereum.org/EIPS/eip-20#methods)
 
 ### 앨리스 예시로 보는 전송과 승인
 
