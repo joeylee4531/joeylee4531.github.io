@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-19
+    summary: AI 부정행위 우려 속 55만 수험생 수능
+    content: >-
+      AI를 이용한 부정행위 우려 속에 약 55만 수험생이 수능을 치르며, 교육 당국은 부정행위 차단에 총력을 기울인다. <a href="https://x.com/yonhaptweet/status/2123225363795042702" aria-label="연합뉴스 X 게시물 보기" title="연합뉴스 X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-18
     summary: PHP에 이어 자바에서도 고위험 취약점 발견
     content: >-
