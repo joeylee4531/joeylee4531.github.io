@@ -6,7 +6,7 @@ compact_header: true
 permalink: /erc-20-transfer-and-approval/
 ---
 
-토큰 30개를 쓸 수 있도록 서비스에 승인하면 서비스 잔액은 얼마나 늘어날까? 서비스 잔액은 그대로다. 승인은 서비스에 ‘사용 한도’를 설정하고, 잔액은 실제로 토큰을 전송할 때 바뀐다. 이 차이를 알면 토큰을 예치할 때 지갑이 먼저 승인을 요청하는 이유를 이해할 수 있다.
+토큰 30개를 쓸 수 있도록 서비스에 승인하면 서비스 잔액은 얼마나 늘어날까? 서비스 잔액은 그대로다. **승인**은 서비스에 ‘사용 한도’를 설정하고, **잔액**은 실제로 토큰을 전송할 때 바뀐다. ERC-20을 공부하면 **토큰을 직접 보내는 방법과 다른 주소에 토큰 사용 한도를 주고 그 권한으로 옮기는 방법**을 알 수 있다.
 
 ## 지갑과 서비스에 공통 규칙이 필요한 이유
 
@@ -75,8 +75,6 @@ Aave는 사용자가 토큰을 맡기거나 빌릴 수 있는 서비스다. Aave
 2. 예치 실행. 사용자가 `Pool`의 `supply`{: .key-term}를 호출하면, `Pool`은 받은 권한으로 사용자의 토큰을 해당 자산을 보관하는 컨트랙트로 옮긴다. Aave 코드에서는 ERC-20의 `transferFrom`을 `safeTransferFrom`{: .key-term}이라는 보조 함수를 통해 호출한다. 위 예시에서 밥의 자리에 자산을 보관하는 컨트랙트가 들어간다. [Pool 명세](https://aave.com/docs/aave-v3/smart-contracts/pool) · [Aave 예치 코드](https://github.com/aave-dao/aave-v3-origin/blob/main/src/contracts/protocol/libraries/logic/SupplyLogic.sol)
 
 Aave의 예치 문서는 이더리움 메인넷 `Pool` 주소를 `0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2`로 안내한다. 사용자가 승인하는 주소와 실제로 토큰을 받는 주소에 각각 어떤 역할이 있는지 이 사례에서 확인할 수 있다. [Aave 메인넷 예치 예제](https://aave.com/docs/aave-v3/markets/supply) · [Etherscan의 Pool 컨트랙트](https://etherscan.io/address/0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2)
-
-참고 문서 [ERC-20 공식 명세](https://eips.ethereum.org/EIPS/eip-20)
 
 <style>
 #post .compact-post-header,
