@@ -60,17 +60,17 @@ document.addEventListener('DOMContentLoaded', function(){
     function updateActiveSection() {
         scrollFrame = null;
         let nextIndex = 0;
-        const readingLine = window.innerHeight * 0.2;
+        const page = document.scrollingElement;
+        const remainingScroll = Math.max(0, page.scrollHeight - page.clientHeight - page.scrollTop);
+        const bottomProgress = Math.max(0, 1 - remainingScroll / window.innerHeight);
+        const readingLine = window.innerHeight * (0.2 + 0.8 * bottomProgress);
 
         for (let index = 0; index < headings.length; index++) {
             if (headings[index].getBoundingClientRect().top > readingLine) break;
             nextIndex = index;
         }
 
-        const page = document.scrollingElement;
-        if (page.scrollTop > 0 && page.scrollTop + page.clientHeight >= page.scrollHeight - 2) {
-            nextIndex = tocLinks.length - 1;
-        }
+
 
         if (nextIndex === activeIndex) return;
         if (activeIndex >= 0) {
