@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-20
+    summary: ROMULUS ClickFix 공격으로 원격제어 악성코드 유포
+    content: >-
+      ROMULUS ClickFix 공격으로 PC 원격제어와 웹캠·마이크 감시가 가능한 악성코드가 유포되고 있으며, 공격자는 DLL 사이드로딩과 DNS-over-HTTPS로 실행 및 통신을 숨긴다. <a href="https://x.com/TheHackersNews/status/2123712665675837765" aria-label="The Hacker News X 게시물 보기" title="The Hacker News X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-19
     summary: AI 부정행위 우려 속 55만 수험생 수능
     content: >-
