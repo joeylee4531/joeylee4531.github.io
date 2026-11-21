@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-21
+    summary: 컬리 해킹으로 1만 명 넘는 개인정보 유출
+    content: >-
+      컬리가 외부 해킹으로 1만 명이 넘는 이용자의 개인정보 유출 피해를 입었으며, 일부 상품 홍보 프로그램 참여자의 주민등록번호와 계좌번호도 유출된 것으로 보도됐다. <a href="https://x.com/ngnicky/status/2123924939841675625" aria-label="보안재테크 X 게시물 보기" title="보안재테크 X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-20
     summary: ROMULUS ClickFix 공격으로 원격제어 악성코드 유포
     content: >-
