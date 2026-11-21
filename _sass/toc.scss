@@ -2,9 +2,13 @@
   position:fixed;
   top:6rem;
   display: none;
+  max-height:calc(100vh - 152px);
+  max-height:calc(100dvh - 152px);
+  flex-direction:column;
 }
 
 .toc-header {
+  flex-shrink:0;
   font-size:1.25rem;
   font-weight:600;
   padding:0 0 4px 12px;
@@ -19,7 +23,12 @@
 
 .toc-board {
   max-width:#{$sidebarwd};
-  margin:1rem 0 !important;
+  margin:1rem 0 0 !important;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior-y:contain;
+  padding-right:8px;
 }
 
 .toc-board, .toc-list {
@@ -60,7 +69,7 @@
 
 @include mq(wide){
   .toc {
-    display:block;
+    display:flex;
     left:calc(50% + #{$contentwd}/2 + 24px);
     width:calc((100% - #{$contentwd})/2 - 48px);
     max-width:#{$sidebarwd};

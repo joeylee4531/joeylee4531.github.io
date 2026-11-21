@@ -10,7 +10,7 @@ permalink: /erc-721-nft-ownership/
 
 ## NFT 하나를 식별하고 소유자 확인하기
 
-ERC-20에서는 같은 토큰의 잔액을 수량으로 나타낸다. ERC-721에서는 같은 컬렉션 안의 각 NFT에 `tokenId`가 붙는다. 컬렉션 A의 42번과 컬렉션 B의 42번을 구분하려면 같은 체인 안에서 **컨트랙트 주소와 토큰 번호**를 함께 봐야 한다.
+ERC-20에서는 같은 토큰의 잔액을 수량으로 나타낸다. ERC-721에서는 각 NFT에 `tokenId`가 붙고, 이 번호는 같은 컨트랙트 안에서 NFT 하나를 구분한다. 컬렉션 A의 42번과 컬렉션 B의 42번을 구분하려면 같은 체인 안에서 **컨트랙트 주소와 토큰 번호**를 함께 봐야 한다.
 
 지갑은 ERC-165의 `supportsInterface(0x80ac58cd)`로 ERC-721 지원 여부를 확인할 수 있다. 이후 `balanceOf(앨리스)`를 호출하면 앨리스가 가진 개수를, `ownerOf(42)`를 호출하면 42번 NFT의 소유자 주소를 얻는다. ERC-173의 `owner()`는 컨트랙트 자체의 소유자를 조회할 때 쓰인다. [ERC-721 명세](https://eips.ethereum.org/EIPS/eip-721#specification) · [ERC-173 명세](https://eips.ethereum.org/EIPS/eip-173#specification)
 
@@ -69,3 +69,5 @@ ERC-20에서는 같은 토큰의 잔액을 수량으로 나타낸다. ERC-721에
 ## 실제 사용 사례 · Su Squares의 광고 공간
 
 Su Squares는 광고 공간을 빌려 이미지를 배치하는 서비스다. 광고 공간은 칸마다 위치가 다르다. ERC-721의 `balanceOf`로는 한 주소가 보유한 칸의 수를, `ownerOf`로는 특정 칸의 소유자를 확인할 수 있다. 공식 명세는 Su Squares를 기본 표준과 선택 확장을 구현한 사례로 소개한다. [ERC-721 구현 사례](https://eips.ethereum.org/EIPS/eip-721#implementations)
+
+다음 글 · [ERC-1155로 여러 종류의 아이템을 한 번에 보내기]({{ "/erc-1155-multi-token/" | relative_url }})

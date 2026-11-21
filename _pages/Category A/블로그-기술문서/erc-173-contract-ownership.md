@@ -30,7 +30,7 @@ permalink: /erc-173-contract-ownership/
 
 다른 컨트랙트에 물어보지 않고 현재 소유자를 읽을 수 있다. 앨리스가 관리하던 컨트랙트를 밥에게 넘기는 경우를 다시 보자. 컨트랙트가 소유자 주소를 직접 저장하는 구현이라면, 앨리스는 `transferOwnership(밥 주소)`를 호출한다. 이전이 끝나면 컨트랙트에 저장된 소유자 주소가 밥의 주소로 바뀐다. 관리 화면은 `owner()`를 호출해 새 소유자를 확인할 수 있다.
 
-명세가 검토한 다른 방식에서도 같은 상황을 생각해 볼 수 있다.
+명세는 소유권을 ENS 이름이나 NFT에 연결하는 방식도 검토했다. ENS는 example.eth처럼 사람이 읽을 수 있는 이름을 등록하고 관리하는 이더리움 이름 서비스다.
 
 | 소유권을 연결하는 대상 | 앨리스가 밥에게 넘기는 방법 | 현재 소유자를 확인하는 방법 |
 | --- | --- | --- |
@@ -45,3 +45,5 @@ permalink: /erc-173-contract-ownership/
 Diamond의 공개 참조 구현인 diamond-3는 현재 소유자가 요청했는지 확인한 뒤 새 소유자 주소를 저장한다. Diamond는 여러 모듈의 기능을 한 컨트랙트 주소로 제공하는 구조이며, 소유권 관리는 `OwnershipFacet` 모듈이 맡는다. 이 모듈의 `owner()`는 저장된 소유자 주소를 읽고, `transferOwnership()`은 호출자가 현재 소유자인지 확인한 뒤 새 주소를 저장한다.
 
 여기서 ERC-173이 정하는 부분은 관리 도구가 소유자를 조회하고 이전을 요청할 때 쓰는 함수다. 누가 소유권을 넘길 수 있는지 검사하고 어디에 주소를 저장할지는 Diamond의 코드가 담당한다. [Diamond 표준](https://eips.ethereum.org/EIPS/eip-2535) · [OwnershipFacet 구현](https://github.com/mudgen/diamond-3/blob/master/contracts/facets/OwnershipFacet.sol)
+
+다음 글 · [ERC-721에서 NFT는 누가 소유하고 누가 옮길 수 있을까?]({{ "/erc-721-nft-ownership/" | relative_url }})

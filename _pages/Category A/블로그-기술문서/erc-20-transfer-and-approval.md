@@ -41,7 +41,7 @@ ERC-20은 이런 연동 문제를 줄이기 위해 등장했다. 토큰 개발�
 
 ### 앨리스 예시로 보는 전송과 승인
 
-앨리스가 `transfer(밥, 20)`{: .key-term}을 호출하면 앨리스의 토큰 20개가 밥에게 이동한다. 서비스가 앨리스의 토큰을 옮겨야 한다면 앨리스가 먼저 `approve(서비스, 30)`{: .key-term}을 호출한다. 첫 번째 인자인 `spender`{: .key-term}는 토큰을 옮길 권한을 받는 주소다. 서비스에 설정된 한도는 `allowance(앨리스, 서비스)`{: .key-term}로 확인할 수 있다.
+앨리스가 `transfer(밥, 20)`{: .key-term}을 호출하면 앨리스의 토큰 20개가 밥에게 이동한다. 이제 별개의 예시로, 앨리스에게 토큰이 100개 있고 밥과 서비스에는 0개 있다고 하자. 서비스가 앨리스의 토큰을 옮기려면 앨리스가 먼저 `approve(서비스, 30)`{: .key-term}을 호출한다. 첫 번째 인자인 `spender`{: .key-term}는 토큰을 옮길 권한을 받는 주소다. 서비스에 설정된 한도는 `allowance(앨리스, 서비스)`{: .key-term}로 확인할 수 있다.
 
 승인 후 서비스가 `transferFrom(앨리스, 밥, 20)`{: .key-term}을 호출하면 앨리스의 잔액에서 20개가 빠지고 밥의 잔액에 20개가 들어간다. 이때 서비스가 자신의 사용 한도에서 20개를 쓴다. 두 번째 인자인 `to`{: .key-term}에 서비스 주소를 넣으면 서비스가 토큰을 받는다.
 
@@ -75,6 +75,8 @@ Aave는 사용자가 토큰을 맡기거나 빌릴 수 있는 서비스다. Aave
 2. 예치 실행. 사용자가 `Pool`의 `supply`{: .key-term}를 호출하면, `Pool`은 받은 권한으로 사용자의 토큰을 해당 자산을 보관하는 컨트랙트로 옮긴다. Aave 코드에서는 ERC-20의 `transferFrom`을 `safeTransferFrom`{: .key-term}이라는 보조 함수를 통해 호출한다. 위 예시에서 밥의 자리에 자산을 보관하는 컨트랙트가 들어간다. [Pool 명세](https://aave.com/docs/aave-v3/smart-contracts/pool) · [Aave 예치 코드](https://github.com/aave-dao/aave-v3-origin/blob/main/src/contracts/protocol/libraries/logic/SupplyLogic.sol)
 
 Aave의 예치 문서는 이더리움 메인넷 `Pool` 주소를 `0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2`로 안내한다. 사용자가 승인하는 주소와 실제로 토큰을 받는 주소에 각각 어떤 역할이 있는지 이 사례에서 확인할 수 있다. [Aave 메인넷 예치 예제](https://aave.com/docs/aave-v3/markets/supply) · [Etherscan의 Pool 컨트랙트](https://etherscan.io/address/0x87870Bca3F3fD6335C3F4ce8392D69350B4fa4E2)
+
+다음 글 · [ERC-165로 컨트랙트가 지원하는 기능 확인하기]({{ "/erc-165-interface-detection/" | relative_url }})
 
 <style>
 #post .compact-post-header,

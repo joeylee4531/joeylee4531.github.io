@@ -80,6 +80,16 @@ document.addEventListener('DOMContentLoaded', function(){
         tocLinks[nextIndex].classList.add('is-active-link');
         tocLinks[nextIndex].setAttribute('aria-current', 'location');
         activeIndex = nextIndex;
+
+        const activeBounds = tocLinks[nextIndex].getBoundingClientRect();
+        const boardBounds = tocBorad.getBoundingClientRect();
+        if (tocBorad.clientHeight > 0 && tocBorad.scrollHeight > tocBorad.clientHeight) {
+            if (activeBounds.top < boardBounds.top) {
+                tocBorad.scrollTop += activeBounds.top - boardBounds.top;
+            } else if (activeBounds.bottom > boardBounds.bottom) {
+                tocBorad.scrollTop += activeBounds.bottom - boardBounds.bottom;
+            }
+        }
     }
 
     function scheduleActiveSectionUpdate() {
@@ -222,3 +232,4 @@ window.addEventListener('load', function(){
         
     window.addEventListener('message', handleMessage);
 });
+

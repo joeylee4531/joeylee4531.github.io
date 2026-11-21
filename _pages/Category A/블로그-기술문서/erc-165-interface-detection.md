@@ -8,6 +8,8 @@ permalink: /erc-165-interface-detection/
 
 지갑이 스마트 컨트랙트 주소를 하나 받았다고 하자. 이 컨트랙트가 NFT의 소유자를 조회하는 기능을 지원하는지 어떻게 알 수 있을까? ERC-165를 공부하면 **스마트 컨트랙트가 어떤 표준 인터페이스를 지원하는지 공통된 방식으로 확인할 수 있다.** 인터페이스는 호출할 수 있는 함수들의 약속이다. [ERC-165 제안 배경](https://eips.ethereum.org/EIPS/eip-165#motivation)
 
+지갑은 컨트랙트의 supportsInterface 함수에 ERC-721을 가리키는 번호 0x80ac58cd를 넣어 지원 여부를 물을 수 있다. true가 돌아오면 컨트랙트가 그 기능을 지원한다고 답한 것이다. [ERC-721 인터페이스 명세](https://eips.ethereum.org/EIPS/eip-721#specification)
+
 ## 함수 선택자와 인터페이스 ID
 
 함수 선택자는 함수 이름과 매개변수 타입을 적은 문자열을 Keccak-256으로 해시한 뒤 앞 4바이트를 취한 값이다. 예를 들어 잔액 조회 함수의 경우 `balanceOf(address)`를 사용한다. 매개변수 이름과 반환 타입은 계산에 들어가지 않는다.
@@ -58,3 +60,5 @@ ERC-721은 ERC-165 지원을 요구한다. 지갑이나 마켓이 대상 컨트�
 ERC-165 명세는 이더리움 이름 서비스인 ENS도 실제 도입 사례로 언급한다. ENS의 리졸버 표준은 주소 조회처럼 개별 기능을 식별하는 인터페이스 ID를 정의한다. 호출하는 쪽은 어떤 조회 기능을 사용할 수 있는지 확인한 뒤 해당 기능을 호출할 수 있다. [ERC-165 호환성 설명](https://eips.ethereum.org/EIPS/eip-165#backwards-compatibility) · [ENS 리졸버 표준](https://eips.ethereum.org/EIPS/eip-137#resolver-specification)
 
 `true`는 컨트랙트가 지원한다고 응답했다는 뜻이다. 그 응답만으로 개별 함수가 명세에 맞게 동작하는지까지 검증할 수는 없다.
+
+다음 글 · [ERC-173으로 스마트 컨트랙트의 소유권 관리하기]({{ "/erc-173-contract-ownership/" | relative_url }})
