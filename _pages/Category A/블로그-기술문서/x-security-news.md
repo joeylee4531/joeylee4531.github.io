@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-22
+    summary: FBI 국가범죄정보센터 시스템 침입 정황 발견
+    content: >-
+      FBI가 국가범죄정보센터(NCIC) 시스템의 침입 정황을 발견했으나, 내부 기록 접근이나 개인정보·수사 자료 유출 여부는 아직 확인되지 않은 것으로 전해졌다. <a href="https://x.com/ngnicky/status/2124090271294251463" aria-label="보안재테크 X 게시물 보기" title="보안재테크 X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-21
     summary: 컬리 해킹으로 1만 명 넘는 개인정보 유출
     content: >-
