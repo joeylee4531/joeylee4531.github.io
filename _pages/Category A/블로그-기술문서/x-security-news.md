@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-23
+    summary: 한전ON·전자조달시스템 이용자 개인정보 유출
+    content: >-
+      한전ON 이용자 65만 487명의 주민등록번호·계좌번호·카드번호와 전자조달시스템(SRM) 이용자 약 87만 명의 개인정보가 유출된 것으로 보도됐다. <a href="https://x.com/ngnicky/status/2124446929325281641" aria-label="보안재테크 X 게시물 보기" title="보안재테크 X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-22
     summary: FBI 국가범죄정보센터 시스템 침입 정황 발견
     content: >-
