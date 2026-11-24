@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-24
+    summary: Microsoft Entra Connect Health 무단 접근 확인
+    content: >-
+      Cybernews는 Microsoft가 Entra Connect Health 서비스에 대한 사이버 범죄자의 무단 접근을 확인했으며, 관련 취약점이 금융·의료·정부·제조·교육 분야 조직에 영향을 미쳤을 가능성이 있다고 보도했다. <a href="https://x.com/Cybernews/status/2124867945331376317" aria-label="Cybernews X 게시물 보기" title="Cybernews X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-23
     summary: 한전ON·전자조달시스템 이용자 개인정보 유출
     content: >-
