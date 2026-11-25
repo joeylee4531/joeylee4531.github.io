@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-25
+    summary: Microsoft 365 Copilot 권한 상승 취약점 공개
+    content: >-
+      Cyber Security News는 Microsoft 365 Copilot에서 일부 권한을 가진 공격자가 다른 사용자의 클릭이나 승인 없이 네트워크를 통해 더 높은 권한을 얻을 수 있는 취약점이 공개됐다고 전했다. <a href="https://x.com/The_Cyber_News/status/2125209284413981123" aria-label="Cyber Security News X 게시물 보기" title="Cyber Security News X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-24
     summary: Microsoft Entra Connect Health 무단 접근 확인
     content: >-
