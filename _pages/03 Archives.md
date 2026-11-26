@@ -6,6 +6,36 @@ title: Archives
 archive: true
 permalink: /archives/
 entries:
+  - date: 2026-11-21
+    summary: 'ERC-1155로 여러 종류의 아이템을 한 번에 보내기'
+    content: >-
+      물약과 화살, 한정판 검으로 ERC-1155의 잔액 조회, 일괄 전송, 수신 확인을 살펴봅니다.
+      [본문 읽기](/erc-1155-multi-token/)
+  - date: 2026-11-20
+    summary: 'ERC-721에서 NFT는 누가 소유하고 누가 옮길 수 있을까?'
+    content: >-
+      42번 NFT를 예로 들어 ERC-721의 소유권 조회, 승인, 안전 전송을 살펴봅니다.
+      [본문 읽기](/erc-721-nft-ownership/)
+  - date: 2026-11-19
+    summary: 'OWASP Top 10:2025 — A01 접근 제어 실패(Broken Access Control)'
+    content: >-
+      주문·문서·차량 제어 예시로 인증과 인가, IDOR과 BOLA, 2025년판의 변화와 접근 제어 예방 방법을 정리합니다.
+      [본문 읽기](/owasp-broken-access-control/)
+  - date: 2026-11-19
+    summary: 'ERC-173으로 스마트 컨트랙트의 소유권 관리하기'
+    content: >-
+      컨트랙트 소유자를 확인하고 소유권을 이전하는 표준을 ERC-165와 Diamond 구현 사례로 살펴봅니다.
+      [본문 읽기](/erc-173-contract-ownership/)
+  - date: 2026-11-19
+    summary: 'ERC-165로 컨트랙트가 지원하는 기능 확인하기'
+    content: >-
+      함수 선택자와 인터페이스 ID부터 ERC-165의 지원 여부 확인 절차와 실제 사용 사례까지 정리합니다.
+      [본문 읽기](/erc-165-interface-detection/)
+  - date: 2026-11-18
+    summary: 'ERC-20에서 토큰 전송과 사용 승인은 어떻게 다를까?'
+    content: >-
+      ERC-20의 함수와 이벤트를 정리하고 토큰 사용 승인과 실제 예치 흐름을 살펴봅니다.
+      [본문 읽기](/erc-20-transfer-and-approval/)
   - date: 2026-11-17
     summary: 최신보안이슈 스크랩 시작
     content: >-
