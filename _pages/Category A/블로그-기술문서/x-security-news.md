@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-26
+    summary: VMware vCenter 인증 우회 취약점 공개
+    content: >-
+      The Hacker News는 VMware vCenter에서 네트워크 접근이 가능한 공격자가 인증을 우회할 수 있는 취약점 CVE-2026-123903이 공개됐으며, 심각도는 CVSS 9.8점이라고 전했다. <a href="https://x.com/TheHackersNews/status/2125222119332340021" aria-label="The Hacker News X 게시물 보기" title="The Hacker News X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-25
     summary: Microsoft 365 Copilot 권한 상승 취약점 공개
     content: >-
