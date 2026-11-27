@@ -5,6 +5,10 @@ description: "X에서 발견한 보안 이슈를 링크와 한 줄 요약으로 
 hide_post_header: true
 permalink: /x-security-news/
 entries:
+  - date: 2026-11-27
+    summary: CJ올리브영 해킹으로 개인정보·회원번호 유출
+    content: >-
+      CJ올리브영 내부 업무시스템에 대한 비인가 접근으로 임직원·협력사 관계자·고객 등 790명의 개인정보와 별도로 내부 관리용 회원번호 234만4549건, 회원번호·접속 IP 주소 정보 6만1789건이 유출된 것으로 보도됐다. <a href="https://x.com/ngnicky/status/2126068388288188494" aria-label="보안재테크 X 게시물 보기" title="보안재테크 X 게시물 보기"><span aria-hidden="true">🔗</span></a>
   - date: 2026-11-26
     summary: VMware vCenter 인증 우회 취약점 공개
     content: >-
