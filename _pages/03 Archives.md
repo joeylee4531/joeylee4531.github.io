@@ -6,6 +6,11 @@ title: Archives
 archive: true
 permalink: /archives/
 entries:
+  - date: 2026-11-27
+    summary: 'IDS와 IPS는 어떻게 다를까?'
+    content: >-
+      IDS와 IPS의 배치와 탐지 방식, 장단점을 비교하고 정상 결제 요청이 차단됐을 때 확인할 로그를 살펴봅니다.
+      [본문 읽기](/ids-and-ips/)
   - date: 2026-11-21
     summary: 'ERC-1155로 여러 종류의 아이템을 한 번에 보내기'
     content: >-
